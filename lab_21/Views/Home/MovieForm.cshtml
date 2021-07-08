@@ -1,5 +1,57 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
+﻿@model Movie
+
 @{
+    ViewData["Title"] = "Register Movie Form";
 }
+
+<h3>Validation Summary</h3>
+@Html.ValidationSummary()
+
+
+    <form asp-action="DisplayResult" method="post">
+
+        <label asp-for="Title"></label>
+        <input type="text" asp-for="Title" value="@Model.Title" />
+        @Html.ValidationMessageFor(x => x.Title)
+        <br />
+
+
+        <label asp-for="Genre"></label>
+        <select name="Genre" asp-for="Genre">
+            <option value="">Select a Genre</option>
+            <option value="Action">Action</option>
+            <option value="Adventure">Adventure</option>
+            <option value="Comedy">Comedy</option>
+            <option value="Documentary">Documentary</option>
+            <option value="Drama">Drama</option>
+            <option value="Epic">Epic</option>
+            <option value="Fantasy">Fantasy</option>
+            <option value="Horror">Horror</option>
+            <option value="Martial Arts">Martial Arts</option>
+            <option value="Musical">Musical</option>
+            <option value="Sci-Fi">Sci-Fi</option>
+            <option value="Thriller">Drama</option>
+            <option value="Western">Western</option>
+
+        </select>
+        <br />
+
+
+        <label asp-for="Year"></label>
+        <input type="number" asp-for="Year" value="@Model.Year"/>
+        @Html.ValidationMessageFor(x => x.Year)
+        <br />
+
+
+        <label asp-for="@Model.Actors"></label>
+        <input type="text" asp-for="@Model.Actors" value="@Model.Actors" />
+        <br />
+
+
+        <label asp-for="Director"></label>
+        <input type="text" asp-for="Director" value="@Model.Director" />
+        <br />
+
+        <input type="submit" value="submit movie" />
+
+    </form>

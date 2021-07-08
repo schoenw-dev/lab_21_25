@@ -11,16 +11,30 @@ namespace lab_21.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
 
-        public HomeController(ILogger<HomeController> logger)
-        {
-            _logger = logger;
-        }
 
         public IActionResult Index()
         {
             return View();
+        }
+
+        public IActionResult MovieForm()
+        {
+            return View(new Movie());
+            
+        }
+
+        public IActionResult DisplayResult(Movie newMovie)
+        {
+            if (ModelState.IsValid)
+            {
+                return View("DisplayResult", newMovie);
+            }
+            else
+            {
+                return View("MovieForm", newMovie);
+
+            }
         }
 
         public IActionResult Privacy()
